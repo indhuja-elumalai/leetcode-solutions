@@ -8,7 +8,6 @@ class Solution:
                 backtrack(s+"(",open+1,close)
             if close<open:
                 backtrack(s+")",open,close+1)
-
         result=[]
         backtrack("",0,0)
         return result
