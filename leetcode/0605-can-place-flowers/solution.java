@@ -18,4 +18,3 @@ class Solution {
         return n <= 0;
     }
 }
-
