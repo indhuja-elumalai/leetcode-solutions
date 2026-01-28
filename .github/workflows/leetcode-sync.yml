@@ -1,2 +1,22 @@
-- name: LeetCode Sync
-  uses: joshcai/leetcode-sync@v1.7
+name: LeetCode Sync
+
+on:
+  workflow_dispatch: # allows manual run
+  schedule:
+    - cron: '0 0 * * *' # runs daily at midnight
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: LeetCode Sync
+        uses: joshcai/leetcode-sync@v1.7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          leetcode-session: ${{ secrets.LEETCODE_SESSION }}
+          leetcode-csrf-token: ${{ secrets.LEETCODE_CSRF_TOKEN }}
+          filter-duplicate-secs: 86400
+          destination-folder: ./leetcode
+          commit-header: "Sync LeetCode submissions"
