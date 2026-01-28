@@ -1,18 +1,2 @@
-name: Sync LeetCode Submissions
-
-on:
-  workflow_dispatch:
-  schedule:
-    - cron: "0 0 * * *"
-
-jobs:
-  sync:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: LeetCode Sync
-        uses: joshcai/leetcode-sync@v1.7
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          leetcode-session: ${{ secrets.LEETCODE_SESSION }}
-          leetcode-csrf-token: ${{ secrets.LEETCODE_CSRF_TOKEN }}
+- name: LeetCode Sync
+  uses: joshcai/leetcode-sync@v1.7
