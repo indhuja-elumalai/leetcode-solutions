@@ -21,4 +21,4 @@ jobs:
           destination-folder: ./leetcode
           commit-header: "Sync LeetCode submissions"
 
-give fully updated code
+
