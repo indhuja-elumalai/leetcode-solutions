@@ -12,11 +12,9 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: LeetCode Sync
-        uses: joshcai/leetcode-sync@v1.7
+        uses: YeungKC/leetcode-sync@v1.4
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           leetcode-session: ${{ secrets.LEETCODE_SESSION }}
           leetcode-csrf-token: ${{ secrets.LEETCODE_CSRF_TOKEN }}
-          filter-duplicate-secs: 86400
           destination-folder: ./leetcode
-          commit-header: "Sync LeetCode submissions"
