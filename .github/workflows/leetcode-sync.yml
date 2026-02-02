@@ -1,24 +1,24 @@
 name: LeetCode Sync
 
 on:
-  workflow_dispatch:
-  schedule:
-    - cron: '0 0 * * *'
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
 
 jobs:
-  sync:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
 
-      - name: LeetCode Sync
-        # Using a maintained fork that fixes the 'submissions is not iterable' error
-        uses: misha-panyushkin/leetcode-sync@v1
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          leetcode-session: ${{ secrets.LEETCODE_SESSION }}
-          leetcode-csrf-token: ${{ secrets.LEETCODE_CSRF_TOKEN }}
-          filter-duplicate-secs: 86400
-          destination-folder: leetcode
-          commit-header: "Sync LeetCode submissions [skip ci]"
+      - name: LeetCode Sync
+        uses: joshcai/leetcode-sync@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          leetcode-session: ${{ secrets.LEETCODE_SESSION }}
+          leetcode-csrf-token: ${{ secrets.LEETCODE_CSRF_TOKEN }}
+          filter-duplicate-secs: 86400
+          destination-folder: ./leetcode
+          commit-header: "Sync LeetCode submissions"
+
+give fully updated code
